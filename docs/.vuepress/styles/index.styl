@@ -1,12 +1,117 @@
 .home .hero img
   max-width 140px
 
+.home .hero h1
+  font-weight 800
+  letter-spacing .5px
+
+.home .hero .description
+  max-width 760px
+
 .navbar .site-name
   font-weight 700
 
 .page .theme-default-content
   font-size 16px
-  line-height 1.8
+  line-height 1.85
 
 .sidebar-heading, .sidebar-link
   font-size 14px
+
+.theme-default-content:not(.custom) a:hover
+  text-decoration underline
+
+.home-panels
+  display grid
+  grid-template-columns repeat(3, minmax(0, 1fr))
+  gap 1rem
+  margin 2rem 0
+
+.home-panel
+  background linear-gradient(180deg, #ffffff 0%, #f7fbfa 100%)
+  border 1px solid #e8f2ef
+  border-radius 16px
+  padding 1.1rem 1.2rem
+  box-shadow 0 10px 30px rgba(62, 175, 124, 0.06)
+
+.home-panel h3
+  margin-top 0
+  margin-bottom .8rem
+
+.home-panel ul
+  margin 0
+  padding-left 1.1rem
+
+.article-list
+  display grid
+  gap 1rem
+  margin 1.2rem 0 1.8rem
+
+.article-card
+  border 1px solid #ebeff5
+  border-radius 16px
+  padding 1rem 1.15rem
+  background #fff
+  box-shadow 0 8px 24px rgba(15, 23, 42, 0.05)
+
+.article-card h3
+  margin .3rem 0 .4rem
+
+.article-card p
+  margin 0
+  color #5c6773
+
+.article-date
+  display inline-block
+  font-size .88rem
+  color #6b7280
+  background #f4f7fb
+  border-radius 999px
+  padding .2rem .55rem
+
+.friend-grid
+  display grid
+  grid-template-columns repeat(2, minmax(0, 1fr))
+  gap 1rem
+  margin-top 1rem
+
+.friend-card
+  border 1px solid #ebeff5
+  border-radius 16px
+  padding 1rem 1.1rem
+  background #fff
+  box-shadow 0 8px 24px rgba(15, 23, 42, 0.04)
+
+.friend-card h3
+  margin-top 0
+  margin-bottom .5rem
+  font-size 1rem
+
+.friend-card p
+  margin 0
+  color #5c6773
+
+.post-meta
+  color #6b7280
+  font-size .95rem
+  margin-top -.4rem
+  margin-bottom 1.2rem
+
+.comment-tip
+  margin-bottom .8rem
+  color #5c6773
+  font-size .95rem
+
+.utterances-wrapper
+  margin-top 1rem
+
+blockquote
+  border-left 4px solid #3eaf7c
+  background #f8fbfa
+
+@media (max-width: 959px)
+  .home-panels
+    grid-template-columns 1fr
+
+  .friend-grid
+    grid-template-columns 1fr

@@ -5,6 +5,7 @@ module.exports = {
   head: [
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
+    ['meta', { name: 'keywords', content: 'VuePress, 博客, GitHub Pages, 运维, 小龙虾' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   themeConfig: {
@@ -16,6 +17,13 @@ module.exports = {
     sidebarDepth: 2,
     nav: [
       { text: '首页', link: '/' },
+      {
+        text: '博客',
+        items: [
+          { text: '文章归档', link: '/archive/' },
+          { text: '第一篇文章', link: '/posts/first-post' }
+        ]
+      },
       {
         text: '指南',
         items: [
@@ -31,6 +39,7 @@ module.exports = {
           { text: '灵感草稿', link: '/notes/ideas' }
         ]
       },
+      { text: '友链', link: '/friends/' },
       { text: '关于', link: '/about/' }
     ],
     sidebar: {
@@ -46,6 +55,27 @@ module.exports = {
           title: '维护手记',
           collapsable: false,
           children: ['', 'ops', 'ideas']
+        }
+      ],
+      '/archive/': [
+        {
+          title: '文章归档',
+          collapsable: false,
+          children: ['']
+        }
+      ],
+      '/posts/': [
+        {
+          title: '博客文章',
+          collapsable: false,
+          children: ['first-post']
+        }
+      ],
+      '/friends/': [
+        {
+          title: '友链',
+          collapsable: false,
+          children: ['']
         }
       ],
       '/about/': [
