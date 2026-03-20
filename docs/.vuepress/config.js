@@ -9,7 +9,6 @@ module.exports = {
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   themeConfig: {
-    logo: '/favicon.ico',
     repo: 'Elicsdy/ElicsdyBlog',
     docsDir: 'docs',
     editLinks: false,
