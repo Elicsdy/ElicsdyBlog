@@ -44,7 +44,7 @@ def format_date_cn(dt: datetime) -> str:
     return dt.strftime('%Y年%m月%d日')
 
 
-def unique_items(items: list, limit: int = 5) -> list:
+def unique_items(items: list, limit: int = 10) -> list:
     seen = set()
     result = []
     for item in items:
@@ -82,21 +82,21 @@ def write_news_page(report_date: datetime, china_items: list, world_items: list)
     lines = [
         '---',
         f'title: {title}',
-        f'description: {title}，整理国内外 10 条值得关注的热点新闻。',
+        f'description: {title}，整理国内外各 10 条值得关注的热点新闻。',
         '---',
         '',
         f'# {title}',
         '',
         f'> 生成时间：{generated_at}（Asia/Shanghai）',
         '>',
-        '> 口径说明：默认整理 **国内 5 条 + 国际 5 条**，来源为央视网公开新闻列表，方便日后回看。',
+        '> 口径说明：默认整理 **国内 10 条 + 国际 10 条**，来源为央视网公开新闻列表，方便日后回看。',
         '',
         '## 今日速览',
         '',
     ]
 
-    china_items = unique_items(china_items, 5)
-    world_items = unique_items(world_items, 5)
+    china_items = unique_items(china_items, 10)
+    world_items = unique_items(world_items, 10)
     all_items = [(item, '国内') for item in china_items] + [(item, '国际') for item in world_items]
     for idx, (item, section) in enumerate(all_items, start=1):
         lines.append(f'{idx}. **{normalize_text(item.get("title", ""))}**（{section}）')
@@ -135,10 +135,10 @@ def write_news_index():
         '',
         '默认口径：',
         '',
-        '- **国内 5 条**：来自央视网中国新闻频道公开列表',
-        '- **国际 5 条**：来自央视网国际新闻频道公开列表',
+        '- **国内 10 条**：来自央视网中国新闻频道公开列表',
+        '- **国际 10 条**：来自央视网国际新闻频道公开列表',
         '',
-        '> 这是一份适合博客阅读的“每日热点整理”，不是完整新闻数据库。重点是帮你快速回看当天最值得注意的 10 条新闻。',
+        '> 这是一份适合博客阅读的“每日热点整理”，不是完整新闻数据库。重点是帮你快速回看当天最值得注意的 20 条新闻。',
         '',
         '## 最新新闻',
         ''
