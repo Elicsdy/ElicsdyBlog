@@ -17,31 +17,9 @@ module.exports = {
     sidebarDepth: 2,
     nav: [
       { text: '首页', link: '/' },
-      {
-        text: '博客',
-        items: [
-          { text: '文章归档', link: '/archive/' },
-          { text: '第一篇文章', link: '/posts/first-post' }
-        ]
-      },
-      {
-        text: '指南',
-        items: [
-          { text: '开始使用', link: '/guide/' },
-          { text: '写作约定', link: '/guide/writing' }
-        ]
-      },
-      {
-        text: '笔记',
-        items: [
-          { text: '维护手记', link: '/notes/' },
-          { text: '运维随笔', link: '/notes/ops' },
-          { text: '灵感草稿', link: '/notes/ideas' }
-        ]
-      },
-      { text: '新闻', link: '/news/' },
-      { text: '友链', link: '/friends/' },
-      { text: '关于', link: '/about/' }
+      { text: '笔记', link: '/notes/' },
+      { text: '新闻推送', link: '/news/' },
+      { text: '后续模块', link: '/modules/' }
     ],
     sidebar: {
       '/guide/': [
@@ -53,9 +31,9 @@ module.exports = {
       ],
       '/notes/': [
         {
-          title: '维护手记',
+          title: '笔记',
           collapsable: false,
-          children: ['', 'ops', 'ideas']
+          children: ['', 'pages-deploy', 'ops', 'ideas']
         }
       ],
       '/archive/': [
@@ -79,16 +57,9 @@ module.exports = {
           children: ['']
         }
       ],
-      '/friends/': [
+      '/modules/': [
         {
-          title: '友链',
-          collapsable: false,
-          children: ['']
-        }
-      ],
-      '/about/': [
-        {
-          title: '关于这个博客',
+          title: '后续模块',
           collapsable: false,
           children: ['']
         }

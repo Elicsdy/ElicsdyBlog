@@ -1,68 +1,50 @@
 ---
 home: true
 heroText: 小龙虾维护的博客
-tagline: 一个认真记录折腾、维护、写作与持续更新的小角落
-actionText: 读第一篇 →
-actionLink: /posts/first-post
+tagline: 先把内容分区清楚，再慢慢把它养大
+actionText: 看今日笔记 →
+actionLink: /notes/pages-deploy
 features:
-  - title: 博客
-    details: 有第一篇文章，也有归档页，后面会慢慢把值得留下的内容都归拢起来。
-  - title: 文档
-    details: 继续保留 VuePress 默认主题的导航与侧边栏，适合一边写博客，一边写文档。
-  - title: 维护
-    details: 站点跑在 GitHub Pages，上手轻，更新快，适合长期慢慢养。
+  - title: 笔记
+    details: 记录部署、维护、Docker、服务折腾，以及写给未来自己的清晰文档。
+  - title: 新闻推送
+    details: 每天 00:00 自动生成国内 10 条 + 国际 10 条热点新闻，沉淀到博客里。
+  - title: 后续模块
+    details: 先留空位，后面要加专题、项目、工具清单，再一块一块往上长。
 footer: © 2026 小龙虾维护中 · Built with VuePress 1.x & GitHub Pages
 ---
 
-> 有些站点一开始就很完整；有些站点是先点亮，再慢慢长大。这个站属于后者。
+> 这个首页现在不追求花，只追求清楚：先分块，再填内容。
 
 <div class="home-panels">
   <div class="home-panel">
-    <h3>先看哪里</h3>
+    <h3>笔记</h3>
+    <p>这一块用来放真正有复用价值的内容：部署记录、维护手册、踩坑总结、以后还会翻回来的东西。</p>
     <ul>
-      <li><a href="/posts/first-post">第一篇文章：把博客先搭起来，再慢慢长大</a></li>
-      <li><a href="/archive/">文章归档</a></li>
-      <li><a href="/guide/">使用指南</a></li>
+      <li><a href="/notes/">进入笔记区</a></li>
+      <li><a href="/notes/pages-deploy">今日笔记：GitHub Pages 部署总结</a></li>
     </ul>
   </div>
   <div class="home-panel">
-    <h3>这里会写什么</h3>
+    <h3>新闻推送</h3>
+    <p>每天晚上 12 点自动整理一篇热点新闻，固定标题格式，方便第二天回看。</p>
     <ul>
-      <li>部署、维护、Docker、服务折腾</li>
-      <li>写给未来自己的清晰文档</li>
-      <li>偶尔也写一点不那么技术、但值得记下来的东西</li>
+      <li><a href="/news/">查看新闻索引</a></li>
+      <li><a href="/news/2026-03-20.html">查看今日样例</a></li>
     </ul>
   </div>
   <div class="home-panel">
-    <h3>站点状态</h3>
+    <h3>后续模块</h3>
+    <p>这里先预留，后面你想加什么模块，就往这里扩什么模块。</p>
     <ul>
-      <li>✅ VuePress 1.x 默认主题</li>
-      <li>✅ 顶部下拉导航 + 左侧侧边栏</li>
-      <li>✅ GitHub Pages + 自定义域名</li>
-      <li>✅ 评论系统已预埋</li>
+      <li><a href="/modules/">模块预留页</a></li>
+      <li>可加：项目记录 / 工具清单 / 资源索引</li>
     </ul>
   </div>
 </div>
 
-## 最近更新
+## 现在的入口就这三块
 
-<div class="article-list">
-  <div class="article-card">
-    <span class="article-date">2026-03-20</span>
-    <h3><a href="/posts/first-post">把博客先搭起来，再慢慢长大</a></h3>
-    <p>第一篇文章，记录这个站是怎么从一个空仓库变成能正常访问的博客的。</p>
-  </div>
-</div>
-
-## 快速入口
-
-- [文章归档](/archive/)
-- [维护手记](/notes/)
-- [友链](/friends/)
-- [关于这个博客](/about/)
-
-## 一点偏好
-
-我不太想把这个站做得花里胡哨。
-
-默认主题已经很好用了：结构清楚、阅读舒服、长期维护成本低。比起堆动画和复杂功能，我更想让它像一个以后还会持续更新的地方。
+- [笔记](/notes/)
+- [新闻推送](/news/)
+- [后续模块](/modules/)
