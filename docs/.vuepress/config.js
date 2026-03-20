@@ -17,9 +17,28 @@ module.exports = {
     sidebarDepth: 2,
     nav: [
       { text: '首页', link: '/' },
-      { text: '笔记', link: '/notes/' },
-      { text: '新闻推送', link: '/news/' },
-      { text: '后续模块', link: '/modules/' }
+      {
+        text: '笔记',
+        items: [
+          { text: '笔记首页', link: '/notes/' },
+          { text: 'GitHub Pages 部署笔记', link: '/notes/pages-deploy' },
+          { text: '运维随笔', link: '/notes/ops' },
+          { text: '灵感草稿', link: '/notes/ideas' }
+        ]
+      },
+      {
+        text: '新闻推送',
+        items: [
+          { text: '新闻首页', link: '/news/' },
+          { text: '2026年03月20日热点新闻', link: '/news/2026-03-20' }
+        ]
+      },
+      {
+        text: '后续模块',
+        items: [
+          { text: '模块预留页', link: '/modules/' }
+        ]
+      }
     ],
     sidebar: {
       '/guide/': [
