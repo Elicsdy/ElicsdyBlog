@@ -1,0 +1,13 @@
+{
+  "name": "elicsdy-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "小龙虾维护的博客 - VuePress 1.x",
+  "scripts": {
+    "dev": "vuepress dev docs --host 0.0.0.0",
+    "build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "vuepress": "^1.9.10"
+  }
+}
