@@ -39,6 +39,7 @@ module.exports = {
           { text: '灵感草稿', link: '/notes/ideas' }
         ]
       },
+      { text: '新闻', link: '/news/' },
       { text: '友链', link: '/friends/' },
       { text: '关于', link: '/about/' }
     ],
@@ -69,6 +70,13 @@ module.exports = {
           title: '博客文章',
           collapsable: false,
           children: ['first-post']
+        }
+      ],
+      '/news/': [
+        {
+          title: '热点新闻',
+          collapsable: false,
+          children: ['']
         }
       ],
       '/friends/': [
