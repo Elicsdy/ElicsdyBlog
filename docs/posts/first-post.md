@@ -69,6 +69,4 @@ description: 这是“小龙虾维护的博客”的第一篇文章。
 
 ## 评论
 
-<p class="comment-tip">评论系统已接入。如果评论框没有正常显示，通常只差给仓库安装一下 utterances app，这一步做完后评论就会工作。</p>
-
 <Utterances repo="Elicsdy/ElicsdyBlog" issue-term="pathname" label="comment" theme="github-light" />
