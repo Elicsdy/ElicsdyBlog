@@ -3,9 +3,9 @@ module.exports = {
   description: '记录折腾、维护、写作与日常灵感。',
   base: '/',
   head: [
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'theme-color', content: '#8bcaf7' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
-    ['meta', { name: 'keywords', content: 'VuePress, 博客, GitHub Pages, 运维, 小龙虾' }],
+    ['meta', { name: 'keywords', content: 'VuePress, 博客, GitHub Pages, 原神风格, 提瓦特, 小龙虾' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   themeConfig: {

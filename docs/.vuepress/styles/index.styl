@@ -1,25 +1,172 @@
-.home .hero img
-  max-width 140px
+$teyvatGold = #e7c67a
+$teyvatGoldSoft = rgba(231, 198, 122, .34)
+$teyvatBlue = #8bcaf7
+$teyvatDeep = #0d1731
+$teyvatSky = #eef7ff
+$teyvatText = #edf5ff
+$teyvatMuted = rgba(235, 244, 255, .76)
 
-.home .hero h1
-  font-weight 800
-  letter-spacing .5px
+html, body
+  background linear-gradient(180deg, #0d1731 0%, #111d3d 36%, #172a54 100%)
 
-.home .hero .description
-  max-width 760px
+body
+  color $teyvatText
+  background-image url('/teyvat-bg.svg')
+  background-size cover
+  background-attachment fixed
+  background-position center top
+
+.theme-container
+  min-height 100vh
+  background linear-gradient(180deg, rgba(8, 14, 30, .1) 0%, rgba(8, 14, 30, .3) 100%)
+
+.navbar
+  background rgba(10, 18, 38, .68) !important
+  border-bottom 1px solid rgba(231, 198, 122, .22)
+  backdrop-filter blur(14px)
+  box-shadow 0 16px 40px rgba(0, 0, 0, .18)
+
+.navbar .site-name,
+.navbar .nav-links a,
+.navbar .repo-link
+  color #f6f8ff !important
 
 .navbar .site-name
-  font-weight 700
+  font-weight 800
+  letter-spacing .06em
+  text-shadow 0 0 18px rgba(139, 202, 247, .18)
+
+.dropdown-wrapper .nav-dropdown
+  background rgba(15, 24, 47, .96)
+  border 1px solid rgba(231, 198, 122, .25)
+  border-radius 14px
+  box-shadow 0 18px 40px rgba(0, 0, 0, .3)
+
+.dropdown-wrapper .nav-dropdown .dropdown-item a
+  color #eef5ff !important
+
+.dropdown-wrapper .nav-dropdown .dropdown-item a:hover
+  color #fff8dc !important
+  background rgba(231, 198, 122, .08)
+
+.sidebar
+  background rgba(11, 19, 40, .52) !important
+  border-right 1px solid rgba(231, 198, 122, .14)
+  backdrop-filter blur(10px)
+
+.sidebar-heading,
+.sidebar-link,
+.sidebar-group a.sidebar-link
+  color rgba(236, 245, 255, .88) !important
+  font-size 14px
+
+.sidebar-link.active
+  border-left-color $teyvatGold !important
+  color #fff8df !important
+  background linear-gradient(90deg, rgba(231,198,122,.16), rgba(231,198,122,0))
+
+.page
+  background transparent
+
+.page .theme-default-content,
+.page .page-title,
+.page .page-edit,
+.page .page-nav
+  color $teyvatText
 
 .page .theme-default-content
   font-size 16px
-  line-height 1.85
+  line-height 1.9
+  background rgba(10, 18, 38, .42)
+  border 1px solid rgba(231, 198, 122, .12)
+  border-radius 24px
+  padding 2rem 2.2rem
+  box-shadow 0 22px 48px rgba(0, 0, 0, .18)
+  backdrop-filter blur(10px)
 
-.sidebar-heading, .sidebar-link
-  font-size 14px
+.page .theme-default-content h1,
+.page .theme-default-content h2,
+.page .theme-default-content h3,
+.page .theme-default-content h4
+  color #fff8dc
+  letter-spacing .02em
+
+.page .theme-default-content h2,
+.page .theme-default-content h3
+  border-bottom 1px solid rgba(231, 198, 122, .16)
+  padding-bottom .32rem
+
+.page .theme-default-content p,
+.page .theme-default-content li,
+.page .theme-default-content strong
+  color rgba(239, 246, 255, .92)
+
+.page .theme-default-content a,
+.home .hero .description,
+.home .hero .action,
+.home .hero .action-button
+  color #fef6d8
 
 .theme-default-content:not(.custom) a:hover
   text-decoration underline
+  text-decoration-color rgba(231,198,122,.6)
+
+.home .hero
+  padding-top 2rem
+
+.home .hero img
+  max-width 156px
+  filter drop-shadow(0 0 28px rgba(231,198,122,.32)) drop-shadow(0 0 18px rgba(139,202,247,.22))
+
+.home .hero h1
+  font-weight 800
+  letter-spacing .08em
+  color #fff8de
+  text-shadow 0 2px 24px rgba(139,202,247,.18)
+
+.home .hero .description
+  max-width 820px
+  color $teyvatMuted
+  font-size 1.07rem
+
+.home .hero .action-button
+  border-radius 999px
+  background linear-gradient(135deg, rgba(145,214,255,.96), rgba(113,176,245,.95)) !important
+  color #122347 !important
+  box-shadow 0 12px 32px rgba(84, 153, 229, .24), inset 0 1px 0 rgba(255,255,255,.55)
+  border 1px solid rgba(255,255,255,.42)
+  font-weight 700
+
+.home .hero .action-button:hover
+  background linear-gradient(135deg, rgba(171,224,255,1), rgba(136,188,255,1)) !important
+
+.home .features
+  margin-top 2rem
+
+.home .feature
+  background rgba(10, 18, 38, .46)
+  border 1px solid rgba(231,198,122,.12)
+  border-radius 18px
+  box-shadow 0 18px 36px rgba(0,0,0,.16)
+  backdrop-filter blur(8px)
+  padding 1rem 1rem .8rem
+
+.home .feature h2
+  color #fff2c2
+
+.home .feature p
+  color $teyvatMuted
+
+blockquote
+  border-left 4px solid $teyvatGold
+  background linear-gradient(90deg, rgba(231,198,122,.12), rgba(139,202,247,.06))
+  color #fff8de
+  border-radius 14px
+
+hr
+  border 0
+  height 1px
+  background linear-gradient(90deg, transparent, rgba(231,198,122,.3), transparent)
 
 .home-panels
   display grid
@@ -27,16 +174,26 @@
   gap 1rem
   margin 2rem 0
 
-.home-panel
-  background linear-gradient(180deg, #ffffff 0%, #f7fbfa 100%)
-  border 1px solid #e8f2ef
-  border-radius 16px
-  padding 1.1rem 1.2rem
-  box-shadow 0 10px 30px rgba(62, 175, 124, 0.06)
+.home-panel,
+.article-card,
+.friend-card
+  background linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.04) 100%)
+  border 1px solid rgba(231,198,122,.16)
+  border-radius 20px
+  padding 1.15rem 1.2rem
+  box-shadow 0 18px 42px rgba(0, 0, 0, .18), inset 0 1px 0 rgba(255,255,255,.08)
+  backdrop-filter blur(12px)
 
-.home-panel h3
+.home-panel h3,
+.article-card h3,
+.friend-card h3
   margin-top 0
-  margin-bottom .8rem
+  color #fff2c5
+
+.home-panel p,
+.article-card p,
+.friend-card p
+  color $teyvatMuted
 
 .home-panel ul
   margin 0
@@ -47,27 +204,14 @@
   gap 1rem
   margin 1.2rem 0 1.8rem
 
-.article-card
-  border 1px solid #ebeff5
-  border-radius 16px
-  padding 1rem 1.15rem
-  background #fff
-  box-shadow 0 8px 24px rgba(15, 23, 42, 0.05)
-
-.article-card h3
-  margin .3rem 0 .4rem
-
-.article-card p
-  margin 0
-  color #5c6773
-
 .article-date
   display inline-block
-  font-size .88rem
-  color #6b7280
-  background #f4f7fb
+  font-size .86rem
+  color #fff3cb
+  background rgba(231,198,122,.12)
+  border 1px solid rgba(231,198,122,.24)
   border-radius 999px
-  padding .2rem .55rem
+  padding .2rem .58rem
 
 .friend-grid
   display grid
@@ -75,35 +219,21 @@
   gap 1rem
   margin-top 1rem
 
-.friend-card
-  border 1px solid #ebeff5
-  border-radius 16px
-  padding 1rem 1.1rem
-  background #fff
-  box-shadow 0 8px 24px rgba(15, 23, 42, 0.04)
-
-.friend-card h3
-  margin-top 0
-  margin-bottom .5rem
-  font-size 1rem
-
-.friend-card p
-  margin 0
-  color #5c6773
-
 .post-meta
-  color #6b7280
+  color rgba(232, 240, 255, .7)
   font-size .95rem
   margin-top -.4rem
   margin-bottom 1.2rem
 
-
 .utterances-wrapper
   margin-top 1rem
+  border-top 1px solid rgba(231,198,122,.16)
+  padding-top 1rem
 
-blockquote
-  border-left 4px solid #3eaf7c
-  background #f8fbfa
+.table-of-contents,
+.page-nav,
+.page-edit
+  color $teyvatMuted
 
 @media (max-width: 959px)
   .home-panels
@@ -111,3 +241,6 @@ blockquote
 
   .friend-grid
     grid-template-columns 1fr
+
+  .page .theme-default-content
+    padding 1.25rem 1.1rem

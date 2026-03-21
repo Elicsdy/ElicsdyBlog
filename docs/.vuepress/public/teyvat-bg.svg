@@ -1,0 +1,31 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="aurora1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(280 220) rotate(35) scale(520 320)">
+      <stop stop-color="#CFEAFF"/>
+      <stop offset="1" stop-color="#CFEAFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aurora2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1200 260) rotate(145) scale(600 360)">
+      <stop stop-color="#E6D0FF"/>
+      <stop offset="1" stop-color="#E6D0FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aurora3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 980) rotate(180) scale(900 420)">
+      <stop stop-color="#A8D6FF"/>
+      <stop offset="1" stop-color="#A8D6FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="#0E1730"/>
+  <rect width="1600" height="1200" fill="url(#aurora1)"/>
+  <rect width="1600" height="1200" fill="url(#aurora2)"/>
+  <rect width="1600" height="1200" fill="url(#aurora3)"/>
+  <g fill="#FFF7D6" opacity="0.85">
+    <circle cx="126" cy="118" r="2.2"/><circle cx="226" cy="208" r="1.6"/><circle cx="320" cy="94" r="1.5"/>
+    <circle cx="466" cy="166" r="2"/><circle cx="598" cy="108" r="1.8"/><circle cx="716" cy="202" r="2.2"/>
+    <circle cx="856" cy="124" r="1.7"/><circle cx="948" cy="184" r="2.1"/><circle cx="1096" cy="110" r="1.7"/>
+    <circle cx="1224" cy="176" r="2.4"/><circle cx="1362" cy="130" r="1.7"/><circle cx="1482" cy="214" r="1.9"/>
+    <circle cx="210" cy="416" r="1.5"/><circle cx="362" cy="378" r="2.1"/><circle cx="520" cy="454" r="1.8"/>
+    <circle cx="690" cy="398" r="1.4"/><circle cx="836" cy="436" r="2.1"/><circle cx="1024" cy="404" r="1.8"/>
+    <circle cx="1178" cy="468" r="1.4"/><circle cx="1330" cy="412" r="1.9"/><circle cx="1452" cy="378" r="1.6"/>
+  </g>
+  <path d="M0 965C152 896 286 878 432 896C565 913 706 973 832 977C973 981 1095 901 1240 886C1382 872 1507 905 1600 938V1200H0V965Z" fill="#102348" opacity="0.64"/>
+  <path d="M0 1026C171 960 309 947 478 980C633 1010 739 1079 892 1084C1046 1090 1154 1008 1318 996C1430 988 1518 1010 1600 1036V1200H0V1026Z" fill="#17315E" opacity="0.76"/>
+</svg>
