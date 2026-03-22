@@ -29,7 +29,7 @@ module.exports = {
         text: '新闻推送',
         items: [
           { text: '新闻首页', link: '/news/' },
-          { text: '2026年03月20日热点新闻', link: '/news/2026-03-20' }
+          { text: '最新热点新闻', link: '/news/' }
         ]
       },
       {

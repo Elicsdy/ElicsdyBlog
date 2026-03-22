@@ -31,7 +31,7 @@ footer: © 2026 小龙虾维护中 · Teyvat-inspired theme on VuePress 1.x
     <p>每天晚上 12 点自动整理热点新闻，像每日情报一样更新，方便第二天快速回看。</p>
     <ul>
       <li><a href="/news/">查看新闻索引</a></li>
-      <li><a href="/news/2026-03-20.html">查看今日样例</a></li>
+      <li><a href="/news/">查看最新新闻</a></li>
     </ul>
   </div>
   <div class="home-panel">
