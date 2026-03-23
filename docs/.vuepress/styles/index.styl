@@ -21,20 +21,55 @@ body
   background linear-gradient(180deg, rgba(8, 14, 30, .1) 0%, rgba(8, 14, 30, .3) 100%)
 
 .navbar
-  background rgba(10, 18, 38, .68) !important
-  border-bottom 1px solid rgba(231, 198, 122, .22)
-  backdrop-filter blur(14px)
-  box-shadow 0 16px 40px rgba(0, 0, 0, .18)
+  background rgba(8, 14, 30, .92) !important
+  border-bottom 1px solid rgba(231, 198, 122, .28)
+  backdrop-filter blur(16px)
+  box-shadow 0 16px 40px rgba(0, 0, 0, .28)
+
+.navbar .links
+  background transparent !important
 
 .navbar .site-name,
 .navbar .nav-links a,
-.navbar .repo-link
-  color #f6f8ff !important
+.navbar .repo-link,
+.navbar .dropdown-title
+  color #fff6d7 !important
 
 .navbar .site-name
   font-weight 800
   letter-spacing .06em
-  text-shadow 0 0 18px rgba(139, 202, 247, .18)
+  text-shadow 0 0 22px rgba(139, 202, 247, .22)
+
+.navbar .nav-links a,
+.navbar .dropdown-title
+  font-weight 700
+  text-shadow 0 1px 10px rgba(0, 0, 0, .25)
+
+.navbar .nav-links a:hover,
+.navbar .dropdown-title:hover
+  color #ffffff !important
+
+.search-box input
+  background rgba(255, 255, 255, .08) !important
+  border 1px solid rgba(231, 198, 122, .28) !important
+  color #f7fbff !important
+  box-shadow inset 0 1px 0 rgba(255,255,255,.08)
+
+.search-box input::placeholder
+  color rgba(236, 244, 255, .58)
+
+.search-box input:focus
+  border-color rgba(231, 198, 122, .58) !important
+  box-shadow 0 0 0 3px rgba(231, 198, 122, .12)
+
+.search-box .suggestions
+  background rgba(10, 18, 38, .96)
+  border 1px solid rgba(231, 198, 122, .22)
+
+.search-box .suggestion a,
+.search-box .suggestion a .page-title,
+.search-box .suggestion a .header
+  color #eef6ff !important
 
 .dropdown-wrapper .nav-dropdown
   background rgba(15, 24, 47, .96)
