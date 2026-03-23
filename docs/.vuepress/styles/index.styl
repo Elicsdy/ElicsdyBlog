@@ -71,18 +71,30 @@ body
 .search-box .suggestion a .header
   color #eef6ff !important
 
+.dropdown-wrapper .arrow
+  border-top-color #fff3c4 !important
+
 .dropdown-wrapper .nav-dropdown
-  background rgba(15, 24, 47, .96)
-  border 1px solid rgba(231, 198, 122, .25)
-  border-radius 14px
-  box-shadow 0 18px 40px rgba(0, 0, 0, .3)
+  background rgba(6, 12, 26, .985) !important
+  border 1px solid rgba(231, 198, 122, .34)
+  border-radius 16px
+  box-shadow 0 22px 48px rgba(0, 0, 0, .42)
+  padding .45rem
 
 .dropdown-wrapper .nav-dropdown .dropdown-item a
-  color #eef5ff !important
+  color #f8fbff !important
+  font-weight 700
+  border-radius 10px
+  padding .55rem .8rem
 
 .dropdown-wrapper .nav-dropdown .dropdown-item a:hover
-  color #fff8dc !important
-  background rgba(231, 198, 122, .08)
+  color #ffffff !important
+  background linear-gradient(90deg, rgba(139,202,247,.22), rgba(231,198,122,.18)) !important
+
+.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active,
+.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-exact-active
+  color #fff3c4 !important
+  background rgba(231, 198, 122, .14) !important
 
 .sidebar
   background rgba(11, 19, 40, .52) !important
