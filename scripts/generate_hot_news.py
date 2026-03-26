@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import os
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -13,6 +14,8 @@ NEWS_DIR = DOCS / 'news'
 CHINA_URL = 'https://news.cctv.com/2019/07/gaiban/cmsdatainterface/page/china_1.jsonp'
 WORLD_URL = 'https://news.cctv.com/2019/07/gaiban/cmsdatainterface/page/world_1.jsonp'
 USER_AGENT = 'Mozilla/5.0 (OpenClaw News Bot)'
+TOTAL_LIMIT = 20
+FETCH_LIMIT_PER_SOURCE = 24
 
 
 def fetch_jsonp(url: str, callback: str):
@@ -26,12 +29,11 @@ def fetch_jsonp(url: str, callback: str):
 
 
 def normalize_text(text: str) -> str:
-    text = re.sub(r'\s+', ' ', text or '').strip()
-    return text
+    return re.sub(r'\s+', ' ', text or '').strip()
 
 
 def choose_report_date() -> datetime:
-    override = __import__('os').environ.get('NEWS_DATE', '').strip()
+    override = os.environ.get('NEWS_DATE', '').strip()
     if override:
         return datetime.strptime(override, '%Y-%m-%d').replace(tzinfo=TZ)
     now = datetime.now(TZ)
@@ -44,12 +46,36 @@ def format_date_cn(dt: datetime) -> str:
     return dt.strftime('%Y年%m月%d日')
 
 
-def unique_items(items: list, limit: int = 10) -> list:
+def parse_focus_date(text: str) -> datetime:
+    text = normalize_text(text)
+    if not text:
+        return datetime(1970, 1, 1, tzinfo=TZ)
+    for fmt in ('%Y-%m-%d %H:%M:%S', '%Y-%m-%d %H:%M'):
+        try:
+            return datetime.strptime(text, fmt).replace(tzinfo=TZ)
+        except ValueError:
+            pass
+    return datetime(1970, 1, 1, tzinfo=TZ)
+
+
+def merge_hot_items(china_items: list, world_items: list, limit: int = TOTAL_LIMIT) -> list:
+    merged = []
+    for item in china_items[:FETCH_LIMIT_PER_SOURCE]:
+        x = dict(item)
+        x['section'] = '国内'
+        merged.append(x)
+    for item in world_items[:FETCH_LIMIT_PER_SOURCE]:
+        x = dict(item)
+        x['section'] = '国际'
+        merged.append(x)
+
+    merged.sort(key=lambda x: parse_focus_date(x.get('focus_date', '')), reverse=True)
+
     seen = set()
     result = []
-    for item in items:
+    for item in merged:
         key = normalize_text(item.get('title', ''))
-        if key in seen:
+        if not key or key in seen:
             continue
         seen.add(key)
         result.append(item)
@@ -58,11 +84,12 @@ def unique_items(items: list, limit: int = 10) -> list:
     return result
 
 
-def item_block(idx: int, item: dict, section: str) -> str:
+def item_block(idx: int, item: dict) -> str:
     title = normalize_text(item.get('title', ''))
     brief = normalize_text(item.get('brief', ''))
     url = item.get('url', '').strip()
     focus_date = normalize_text(item.get('focus_date', ''))
+    section = normalize_text(item.get('section', '')) or '未分类'
     lines = [f'### {idx}. {title}', '', f'- 分类：{section}']
     if focus_date:
         lines.append(f'- 发布时间：{focus_date}')
@@ -78,46 +105,38 @@ def write_news_page(report_date: datetime, china_items: list, world_items: list)
     file_name = report_date.strftime('%Y-%m-%d') + '.md'
     target = NEWS_DIR / file_name
     generated_at = datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')
+    hot_items = merge_hot_items(china_items, world_items, TOTAL_LIMIT)
 
     lines = [
         '---',
         f'title: {title}',
-        f'description: {title}，整理国内外各 10 条值得关注的热点新闻。',
+        f'description: {title}，整理当天最热的 20 条新闻。',
         '---',
         '',
         f'# {title}',
         '',
         f'> 生成时间：{generated_at}（Asia/Shanghai）',
         '>',
-        '> 口径说明：默认整理 **国内 10 条 + 国际 10 条**，来源为央视网公开新闻列表，方便日后回看。',
+        '> 口径说明：默认汇总当天最热的 **20 条新闻**，国内与国际混排展示，并保留分类标记。来源为央视网公开新闻列表，方便日后回看。',
         '',
         '## 今日速览',
         '',
     ]
 
-    china_items = unique_items(china_items, 10)
-    world_items = unique_items(world_items, 10)
-    all_items = [(item, '国内') for item in china_items] + [(item, '国际') for item in world_items]
-    for idx, (item, section) in enumerate(all_items, start=1):
-        lines.append(f'{idx}. **{normalize_text(item.get("title", ""))}**（{section}）')
+    for idx, item in enumerate(hot_items, start=1):
+        lines.append(f'{idx}. **{normalize_text(item.get("title", ""))}**（{item.get("section", "未分类")}）')
     lines.extend(['', '## 详细整理', ''])
 
-    idx = 1
-    for item in china_items:
-        lines.append(item_block(idx, item, '国内'))
+    for idx, item in enumerate(hot_items, start=1):
+        lines.append(item_block(idx, item))
         lines.append('')
-        idx += 1
-    for item in world_items:
-        lines.append(item_block(idx, item, '国际'))
-        lines.append('')
-        idx += 1
 
     lines.extend([
         '## 备注',
         '',
-        '- 国内来源：央视网中国新闻公开列表',
-        '- 国际来源：央视网国际新闻公开列表',
-        '- 这份页面偏向“每日热点整理”，后续如果你想改成更偏时政、财经、科技，脚本也可以再细分。',
+        '- 来源池：央视网中国新闻公开列表 + 央视网国际新闻公开列表',
+        '- 排序方式：优先按发布时间混排，去重后取当天最热的 20 条',
+        '- 页面中仍保留“国内 / 国际”分类标记，方便快速扫读。',
         ''
     ])
     target.write_text('\n'.join(lines), encoding='utf-8')
@@ -135,8 +154,8 @@ def write_news_index():
         '',
         '默认口径：',
         '',
-        '- **国内 10 条**：来自央视网中国新闻频道公开列表',
-        '- **国际 10 条**：来自央视网国际新闻频道公开列表',
+        '- **当天最热 20 条新闻**：国内与国际混排展示',
+        '- 来源池：央视网中国新闻频道公开列表 + 央视网国际新闻频道公开列表',
         '',
         '> 这是一份适合博客阅读的“每日热点整理”，不是完整新闻数据库。重点是帮你快速回看当天最值得注意的 20 条新闻。',
         '',

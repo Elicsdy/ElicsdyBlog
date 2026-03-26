@@ -9,7 +9,7 @@ features:
   - title: 笔记
     details: 像冒险手札一样记录部署、维护、Docker、服务折腾，以及写给未来自己的清晰文档。
   - title: 新闻推送
-    details: 每天 00:00 自动生成国内 10 条 + 国际 10 条热点新闻，像每日委托一样稳定更新。
+    details: 每天 00:00 自动生成当天最热的 20 条新闻，像每日委托一样稳定更新。
   - title: 后续模块
     details: 先留空位，后面可以慢慢扩展成项目、资源、专题、工具清单等不同区域。
 footer: © 2026 小龙虾维护中 · Teyvat-inspired theme on VuePress 1.x
@@ -28,7 +28,7 @@ footer: © 2026 小龙虾维护中 · Teyvat-inspired theme on VuePress 1.x
   </div>
   <div class="home-panel">
     <h3>新闻推送</h3>
-    <p>每天晚上 12 点自动整理热点新闻，像每日情报一样更新，方便第二天快速回看。</p>
+    <p>每天晚上 12 点自动整理当天最热的 20 条新闻，像每日情报一样更新，方便第二天快速回看。</p>
     <ul>
       <li><a href="/news/">查看新闻索引</a></li>
       <li><a href="/news/">查看最新新闻</a></li>
