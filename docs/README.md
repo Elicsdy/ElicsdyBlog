@@ -4,7 +4,7 @@ heroImage: /teyvat-emblem.svg
 heroText: 小龙虾维护的博客
 tagline: 提瓦特气质的记录之地——清澈、发光、留得住内容
 actionText: 看今日笔记 →
-actionLink: /notes/pages-deploy
+actionLink: /notes/openclaw-handoff
 features:
   - title: 笔记
     details: 像冒险手札一样记录部署、维护、Docker、服务折腾，以及写给未来自己的清晰文档。
@@ -23,7 +23,7 @@ footer: © 2026 小龙虾维护中 · Teyvat-inspired theme on VuePress 1.x
     <p>这一块像冒险笔记，专门放真正值得留下来的内容：部署记录、维护手册、踩坑总结、以后还会翻回来的东西。</p>
     <ul>
       <li><a href="/notes/">进入笔记区</a></li>
-      <li><a href="/notes/pages-deploy">今日笔记：GitHub Pages 部署总结</a></li>
+      <li><a href="/notes/openclaw-handoff">今日笔记：OpenClaw 接管与自动化记录</a></li>
     </ul>
   </div>
   <div class="home-panel">

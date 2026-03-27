@@ -20,6 +20,7 @@ module.exports = {
         text: '笔记',
         items: [
           { text: '笔记首页', link: '/notes/' },
+          { text: 'OpenClaw 接管与自动化记录', link: '/notes/openclaw-handoff' },
           { text: 'GitHub Pages 部署笔记', link: '/notes/pages-deploy' },
           { text: '运维随笔', link: '/notes/ops' },
           { text: '灵感草稿', link: '/notes/ideas' }
@@ -51,7 +52,7 @@ module.exports = {
         {
           title: '笔记',
           collapsable: false,
-          children: ['', 'pages-deploy', 'ops', 'ideas']
+          children: ['', 'openclaw-handoff', 'pages-deploy', 'ops', 'ideas']
         }
       ],
       '/archive/': [

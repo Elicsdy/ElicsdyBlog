@@ -11,6 +11,7 @@
 
 ## 当前笔记
 
+- [OpenClaw 接管与自动化记录（2026-03-27）](./openclaw-handoff.md)
 - [GitHub Pages 部署笔记（2026-03-20）](./pages-deploy.md)
 - [运维随笔](./ops.md)
 - [灵感草稿](./ideas.md)
