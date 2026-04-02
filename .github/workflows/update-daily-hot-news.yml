@@ -1,0 +1,60 @@
+name: Update daily hot news
+
+on:
+  schedule:
+    # 00:00 Asia/Shanghai = 16:00 UTC
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+    inputs:
+      news_date:
+        description: Optional report date in Asia/Shanghai (YYYY-MM-DD)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-hot-news
+  cancel-in-progress: false
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate daily hot news
+        id: generate
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.news_date }}" ]; then
+            export NEWS_DATE="${{ github.event.inputs.news_date }}"
+          fi
+          report_date=$(python3 scripts/generate_hot_news.py)
+          echo "report_date=$report_date" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push news updates
+        env:
+          REPORT_DATE: ${{ steps.generate.outputs.report_date }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet -- docs/news; then
+            echo "No news changes to commit."
+            exit 0
+          fi
+
+          git add docs/news
+          git commit -m "chore(news): update daily hot news for $REPORT_DATE"
+          git push origin HEAD:main
