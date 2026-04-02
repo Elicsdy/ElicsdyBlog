@@ -34,6 +34,14 @@ module.exports = {
         ]
       },
       {
+        text: '自动情报',
+        items: [
+          { text: '每周技术周报', link: '/weekly/' },
+          { text: 'GitHub 热门项目', link: '/github-hot/' },
+          { text: 'AI / 开发资讯精选', link: '/ai-digest/' }
+        ]
+      },
+      {
         text: '后续模块',
         items: [
           { text: '模块预留页', link: '/modules/' }
@@ -72,6 +80,27 @@ module.exports = {
       '/news/': [
         {
           title: '热点新闻',
+          collapsable: false,
+          children: ['']
+        }
+      ],
+      '/weekly/': [
+        {
+          title: '每周技术周报',
+          collapsable: false,
+          children: ['']
+        }
+      ],
+      '/github-hot/': [
+        {
+          title: 'GitHub 热门项目',
+          collapsable: false,
+          children: ['']
+        }
+      ],
+      '/ai-digest/': [
+        {
+          title: 'AI / 开发资讯精选',
           collapsable: false,
           children: ['']
         }

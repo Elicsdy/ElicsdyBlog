@@ -1,0 +1,60 @@
+name: Update weekly tech digest
+
+on:
+  schedule:
+    # Monday 00:30 Asia/Shanghai = Sunday 16:30 UTC
+    - cron: '30 16 * * 0'
+  workflow_dispatch:
+    inputs:
+      report_date:
+        description: Optional reference date in Asia/Shanghai (YYYY-MM-DD)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-tech-digest
+  cancel-in-progress: false
+
+jobs:
+  update-weekly-tech-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate weekly tech digest
+        id: generate
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.report_date }}" ]; then
+            export REPORT_DATE="${{ github.event.inputs.report_date }}"
+          fi
+          report_id=$(python3 scripts/generate_weekly_tech_digest.py)
+          echo "report_id=$report_id" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push updates
+        env:
+          REPORT_ID: ${{ steps.generate.outputs.report_id }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet -- docs/weekly; then
+            echo "No weekly digest changes to commit."
+            exit 0
+          fi
+
+          git add docs/weekly
+          git commit -m "chore(weekly): update report for $REPORT_ID"
+          git push origin HEAD:main

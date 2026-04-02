@@ -1,0 +1,60 @@
+name: Update AI and dev digest
+
+on:
+  schedule:
+    # 00:20 Asia/Shanghai = 16:20 UTC
+    - cron: '20 16 * * *'
+  workflow_dispatch:
+    inputs:
+      report_date:
+        description: Optional report date in Asia/Shanghai (YYYY-MM-DD)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-dev-digest
+  cancel-in-progress: false
+
+jobs:
+  update-ai-dev-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate AI / dev digest
+        id: generate
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.report_date }}" ]; then
+            export REPORT_DATE="${{ github.event.inputs.report_date }}"
+          fi
+          report_id=$(python3 scripts/generate_ai_dev_digest.py)
+          echo "report_id=$report_id" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push updates
+        env:
+          REPORT_ID: ${{ steps.generate.outputs.report_id }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet -- docs/ai-digest; then
+            echo "No AI / dev digest changes to commit."
+            exit 0
+          fi
+
+          git add docs/ai-digest
+          git commit -m "chore(ai-digest): update report for $REPORT_ID"
+          git push origin HEAD:main
