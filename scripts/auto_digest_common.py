@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 import json
 import re
+import socket
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
@@ -13,13 +16,27 @@ DOCS = ROOT / 'docs'
 USER_AGENT = 'Mozilla/5.0 (OpenClaw Blog Automation)'
 
 
-def fetch_json(url: str, headers: dict | None = None, timeout: int = 30):
+def fetch_json(url: str, headers: dict | None = None, timeout: int = 30, retries: int = 3, backoff_seconds: float = 2.0):
     req_headers = {'User-Agent': USER_AGENT}
     if headers:
         req_headers.update(headers)
-    req = Request(url, headers=req_headers)
-    with urlopen(req, timeout=timeout) as resp:
-        return json.loads(resp.read().decode('utf-8', 'ignore'))
+
+    last_error = None
+    for attempt in range(1, retries + 1):
+        try:
+            req = Request(url, headers=req_headers)
+            with urlopen(req, timeout=timeout) as resp:
+                return json.loads(resp.read().decode('utf-8', 'ignore'))
+        except (HTTPError, URLError, TimeoutError, socket.timeout, json.JSONDecodeError) as exc:
+            last_error = exc
+            retryable = True
+            if isinstance(exc, HTTPError) and exc.code not in (408, 409, 425, 429) and exc.code < 500:
+                retryable = False
+            if attempt >= retries or not retryable:
+                raise
+            time.sleep(backoff_seconds * attempt)
+
+    raise last_error
 
 
 def build_url(base: str, **params) -> str:
