@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from auto_digest_common import (
@@ -31,7 +31,7 @@ def main():
     repos = github_search_repositories(query, per_page=LIMIT)
 
     title = f'{format_date_cn(report_date)} GitHub 热门项目'
-    generated_at = report_date.astimezone(TZ).strftime('%Y-%m-%d %H:%M:%S')
+    generated_at = datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')
     target = SECTION_DIR / f"{report_date.strftime('%Y-%m-%d')}.md"
 
     lines = [

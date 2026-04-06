@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from auto_digest_common import (
     DOCS,
@@ -63,7 +63,7 @@ def main():
     end_dt = start_dt + timedelta(days=1)
     start_ts = int(start_dt.timestamp())
     end_ts = int(end_dt.timestamp())
-    generated_at = report_date.astimezone(TZ).strftime('%Y-%m-%d %H:%M:%S')
+    generated_at = datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')
 
     ai_hits = collect_hits(AI_KEYWORDS, start_ts, end_ts, AI_LIMIT)
     ai_keys = {item['url'] or item['title'] for item in ai_hits}
