@@ -9,6 +9,7 @@
 
 ## 最新内容
 
+- [2026年11月18日 GitHub 热门项目](/github-hot/2026-11-18.html)
 - [2026年11月17日 GitHub 热门项目](/github-hot/2026-11-17.html)
 - [2026年11月16日 GitHub 热门项目](/github-hot/2026-11-16.html)
 - [2026年11月15日 GitHub 热门项目](/github-hot/2026-11-15.html)
@@ -68,4 +69,3 @@
 - [2026年09月22日 GitHub 热门项目](/github-hot/2026-09-22.html)
 - [2026年09月21日 GitHub 热门项目](/github-hot/2026-09-21.html)
 - [2026年09月20日 GitHub 热门项目](/github-hot/2026-09-20.html)
-- [2026年09月19日 GitHub 热门项目](/github-hot/2026-09-19.html)
